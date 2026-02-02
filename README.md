@@ -1,5 +1,7 @@
 IoT Simulation & Monitoring System Dashboard
+
 Overview:
+
   A full-stack IoT project simulating a smart 2-bedroom apartment with temperature and humidity sensors. The system includes:
 
 - Angular v18+ frontend – CRUD operations & dashboard
