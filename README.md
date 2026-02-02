@@ -1,7 +1,7 @@
 # Coding Assignment – IoT Simulation & Monitoring System
 
 ##  Project Title
-**Smart Apartment IoT Simulation & Monitoring**
+**IoT Simulation & Monitoring System Dashboard**
 
 ---
 
