@@ -6,16 +6,21 @@ import { Sensor } from '../sensor/sensor';
 
 @Component({
   selector: 'app-bedroom',
-  imports: [    CommonModule,
-    FormsModule,
-    Sensor],
+  imports: [ CommonModule,FormsModule,Sensor],
   templateUrl: './bedroom.html',
   styleUrl: './bedroom.css',
 })
 export class Bedroom implements OnInit {
    bedrooms: any[] = [];
-  roomName = '';
-  selectedBedroom: any = null;
+   roomName = '';
+   selectedBedroom: any = null;
+
+   bedroomOptions: string[] = [
+    'Master Bedroom',
+    'Guest Bedroom',
+  
+  ];
+  selectedRoomName: string = '';
 
   constructor(private api: Api) {}
 
@@ -29,11 +34,24 @@ export class Bedroom implements OnInit {
     });
   }
 
-  addBedroom() {
-    if (!this.roomName) return;
+ addBedroom() {
+    if (!this.selectedRoomName) return;
+    if (this.bedrooms.length >= 2) {
+      alert('Only 2 bedrooms allowed as per assignment scenario');
+      return;
+    }
 
-    this.api.addBedroom(this.roomName).subscribe(() => {
-      this.roomName = '';
+    const exists = this.bedrooms.some(
+      b => b.name === this.selectedRoomName
+    );
+
+    if (exists) {
+      alert('Bedroom already added');
+      return;
+    }
+
+    this.api.addBedroom(this.selectedRoomName).subscribe(() => {
+      this.selectedRoomName = '';
       this.loadBedrooms();
     });
   }
@@ -47,6 +65,10 @@ export class Bedroom implements OnInit {
       this.loadBedrooms();
       this.selectedBedroom = null;
     });
+  }
+
+     isBedroomAdded(roomName: string): boolean {
+    return this.bedrooms.some(b => b.name === roomName);
   }
 
 }
