@@ -1,0 +1,120 @@
+/* Sensor Section Styling */
+.sensor-section {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f0f3f7;
+  border-radius: 10px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+}
+
+/* Section title */
+.sensor-section h3 {
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+  color: #273c75;
+}
+
+/* Add sensor form */
+.add-sensor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.add-sensor input,
+.add-sensor select {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #dcdde1;
+  flex: 1 1 200px;
+  font-size: 0.95rem;
+  transition: 0.2s;
+}
+
+.add-sensor input:focus,
+.add-sensor select:focus {
+  border-color: #40739e;
+  outline: none;
+}
+
+/* Add button */
+.add-sensor button {
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: none;
+  background-color: #00a8ff;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+.add-sensor button:hover {
+  background-color: #0097e6;
+}
+
+/* Sensor list */
+.sensor-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sensor-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #dcdde1;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  transition: 0.2s;
+  font-size: 0.95rem;
+}
+
+.sensor-list li:hover {
+  background: #c7ecee;
+}
+
+/* Sensor info text */
+.sensor-list li span {
+  flex: 1;
+}
+
+/* Delete button */
+.sensor-list li button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e84118;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.sensor-list li button:hover {
+  background-color: #c23616;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .add-sensor {
+    flex-direction: column;
+  }
+
+  .add-sensor input,
+  .add-sensor select,
+  .add-sensor button {
+    width: 100%;
+  }
+
+  .sensor-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .sensor-list li button {
+    align-self: flex-end;
+  }
+}

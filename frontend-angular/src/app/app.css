@@ -1,0 +1,19 @@
+.dashboard {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f6fa;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #2f3640;
+}
+
+h2, h3 {
+  color: #353b48;
+  margin-bottom: 10px;
+}

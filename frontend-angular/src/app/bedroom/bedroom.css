@@ -1,0 +1,56 @@
+/* Bedroom section */
+.add-bedroom, .add-sensor {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.add-bedroom input, .add-sensor input, .add-sensor select {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #dcdde1;
+  flex: 1;
+}
+
+button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  background: #40739e;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #2f3640;
+}
+
+.bedroom-list, .sensor-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.bedroom-list li, .sensor-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  background: #dcdde1;
+  transition: 0.2s;
+}
+
+.bedroom-list li:hover, .sensor-list li:hover {
+  background: #c7ecee;
+}
+
+.bedroom-list li.selected {
+  background: #00a8ff;
+  color: white;
+}
+
+.buttons button {
+  margin-left: 5px;
+}

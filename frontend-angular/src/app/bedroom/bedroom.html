@@ -1,0 +1,25 @@
+<div class="bedroom-section">
+<h2>Bedrooms</h2>
+   <div class="add-bedroom">
+<input [(ngModel)]="roomName" placeholder="Bedroom name">
+<button (click)="addBedroom()">Add Bedroom</button>
+</div>
+
+<ul class="bedroom-list">
+  <!-- <li *ngFor="let b of bedrooms">
+    {{ b.name }} -->
+     <li *ngFor="let b of bedrooms" [class.selected]="b === selectedBedroom">
+        <span>{{ b.name }}</span>
+       <div class="buttons">
+    <button (click)="selectBedroom(b)">View Sensors</button>
+    <button (click)="deleteBedroom(b.id)">Delete</button>
+    </div>
+  </li>
+</ul>
+</div>
+
+<hr>
+
+<app-sensor *ngIf="selectedBedroom"
+            [bedroom]="selectedBedroom">
+</app-sensor>
