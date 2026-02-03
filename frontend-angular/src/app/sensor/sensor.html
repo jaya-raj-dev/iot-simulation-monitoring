@@ -1,26 +1,23 @@
-<div class="sensor-section">
-<h3>Sensors for {{ bedroom.name }}</h3>
-<div class="add-sensor">
-<input [(ngModel)]="sensorName" placeholder="Sensor name">
-
-<select [(ngModel)]="sensorType">
-  <option value="temperature">Temperature</option>
-  <option value="humidity">Humidity</option>
-</select>
-
-<button (click)="addSensor()">Add Sensor</button>
-</div>
-
 <ul class="sensor-list">
   <li *ngFor="let sensor of sensors">
-    {{ sensor.sensor_name }} ({{ sensor.sensor_type }})
-    <button (click)="deleteSensor(sensor.id!)">Delete</button>
+
+    <ng-container *ngIf="editingSensor?.id !== sensor.id">
+      {{ sensor.sensor_name }} ({{ sensor.sensor_type }})
+      <button (click)="startEdit(sensor)">Edit</button>
+      <button (click)="deleteSensor(sensor.id)">Delete</button>
+    </ng-container>
+
+    <ng-container *ngIf="editingSensor?.id === sensor.id">
+      <input [(ngModel)]="editSensorName" />
+
+      <select [(ngModel)]="editSensorType">
+        <option value="temperature">Temperature</option>
+        <option value="humidity">Humidity</option>
+      </select>
+
+      <button (click)="updateSensor()">Save</button>
+      <button (click)="cancelEdit()">Cancel</button>
+    </ng-container>
+
   </li>
 </ul>
-</div>
-<!-- 
-<ul>
-  <li *ngFor="let s of sensors">
-    {{ s.sensor_name }} ({{ s.sensor_type }})
-  </li>
-</ul> -->
