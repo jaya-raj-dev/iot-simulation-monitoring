@@ -13,7 +13,7 @@
 
 <ul class="sensor-list">
   <li *ngFor="let sensor of sensors">
-    {{ sensor.sensor_name }} ({{ sensor.sensor_type }}) - Bedroom: {{ sensor.bedroom_id }}
+    {{ sensor.sensor_name }} ({{ sensor.sensor_type }})
     <button (click)="deleteSensor(sensor.id!)">Delete</button>
   </li>
 </ul>
