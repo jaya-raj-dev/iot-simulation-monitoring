@@ -14,6 +14,8 @@ export class Bedroom implements OnInit {
    bedrooms: any[] = [];
    roomName = '';
    selectedBedroom: any = null;
+   editingBedroom: any = null;
+   editRoomName: string = '';
 
    bedroomOptions: string[] = [
     'Master Bedroom',
@@ -70,5 +72,36 @@ export class Bedroom implements OnInit {
      isBedroomAdded(roomName: string): boolean {
     return this.bedrooms.some(b => b.name === roomName);
   }
+  
+startEdit(bedroom: any) {
+  this.editingBedroom = bedroom;
+  this.editRoomName = bedroom.name;
+}
+
+cancelEdit() {
+  this.editingBedroom = null;
+  this.editRoomName = '';
+}
+
+updateBedroom() {
+  if (!this.editRoomName) return;
+
+  // prevent duplicate
+  const exists = this.bedrooms.some(
+    b => b.name === this.editRoomName && b.id !== this.editingBedroom.id
+  );
+
+  if (exists) {
+    alert('Bedroom already exists');
+    return;
+  }
+
+  this.api.updateBedroom(this.editingBedroom.id, this.editRoomName)
+    .subscribe(() => {
+      this.cancelEdit();
+      this.loadBedrooms();
+    });
+}
+
 
 }
