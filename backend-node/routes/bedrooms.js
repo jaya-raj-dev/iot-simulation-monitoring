@@ -7,11 +7,6 @@ router.get('/', async (req, res) => {
   res.json(result.rows);
 });
 
-// router.post('/', async (req, res) => {
-//   const { name } = req.body;
-//   await db.query('INSERT INTO bedrooms(name) VALUES($1)', [name]);
-//   res.sendStatus(201);
-// });
 router.post('/', async (req, res) => {
   const { name } = req.body;
 
@@ -24,12 +19,6 @@ router.post('/', async (req, res) => {
     message: 'Bedroom created successfully'
   });
 });
-
-
-// router.delete('/:id', async (req, res) => {
-//   await db.query('DELETE FROM bedrooms WHERE id=$1', [req.params.id]);
-//   res.sendStatus(200);
-// });
 
 router.delete('/:id', async (req, res) => {
   await db.query(
