@@ -16,7 +16,11 @@ export class Sensor implements OnChanges {
 
   sensors: any[] = [];
   sensorName = '';
-  sensorType = 'temperature';
+  sensorType = 'temperature';  
+  editingSensor: any = null;
+  editSensorName = '';
+  editSensorType = 'temperature';
+  
 
   constructor(private api: Api) {}
 
@@ -53,5 +57,31 @@ export class Sensor implements OnChanges {
     this.sensors = this.sensors.filter(s => s.id !== id);
     });
   }
+  startEdit(sensor: any) {
+  this.editingSensor = sensor;
+  this.editSensorName = sensor.sensor_name;
+  this.editSensorType = sensor.sensor_type;
+}
+
+cancelEdit() {
+  this.editingSensor = null;
+  this.editSensorName = '';
+  this.editSensorType = 'temperature';
+}
+
+updateSensor() {
+  if (!this.editSensorName || !this.editSensorType) return;
+
+  const payload = {
+    sensor_name: this.editSensorName,
+    sensor_type: this.editSensorType
+  };
+
+  this.api.updateSensor(this.editingSensor.id, payload)
+    .subscribe(() => {
+      this.cancelEdit();
+      this.loadSensors();
+    });
+}
 
 }
