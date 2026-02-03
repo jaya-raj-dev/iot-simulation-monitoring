@@ -27,13 +27,24 @@
   <ul class="bedroom-list">
     <li *ngFor="let b of bedrooms"
         [class.selected]="b === selectedBedroom">
-
+ <ng-container *ngIf="editingBedroom?.id !== b.id">
       <span>{{ b.name }}</span>
 
       <div class="buttons">
         <button (click)="selectBedroom(b)">View Sensors</button>
+            <button (click)="startEdit(b)">Edit</button>
         <button (click)="deleteBedroom(b.id)">Delete</button>
       </div>
+      </ng-container>
+       <!-- EDIT MODE -->
+  <ng-container *ngIf="editingBedroom?.id === b.id">
+    <input [(ngModel)]="editRoomName" />
+
+    <div class="buttons">
+      <button (click)="updateBedroom()">Save</button>
+      <button (click)="cancelEdit()">Cancel</button>
+    </div>
+  </ng-container>
     </li>
   </ul>
 </div>
