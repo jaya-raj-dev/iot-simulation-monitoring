@@ -10,14 +10,6 @@ router.get('/:bedroomId', async (req, res) => {
   res.json(result.rows);
 });
 
-// router.post('/', async (req, res) => {
-//   const { bedroom_id, sensor_name, sensor_type } = req.body;
-//   await db.query(
-//     'INSERT INTO sensors(bedroom_id, sensor_name, sensor_type) VALUES($1,$2,$3)',
-//     [bedroom_id, sensor_name, sensor_type]
-//   );
-//   res.sendStatus(201);
-// });
 router.post('/', async (req, res) => {
   const { bedroom_id, sensor_name, sensor_type } = req.body;
 
@@ -54,6 +46,32 @@ router.delete('/:id', async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+router.put('/:id', async (req, res) => {
+  const { id } = req.params;
+  const { sensor_name, sensor_type } = req.body;
+
+  try {
+    const result = await db.query(
+      `UPDATE sensors
+       SET sensor_name = $1, sensor_type = $2
+       WHERE id = $3
+       RETURNING *`,
+      [sensor_name, sensor_type, id]
+    );
+
+    if (result.rowCount === 0) {
+      return res.status(404).json({ message: 'Sensor not found' });
+    }
+
+    res.json({
+      message: 'Sensor updated successfully',
+      data: result.rows[0]
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Failed to update sensor' });
   }
 });
 
