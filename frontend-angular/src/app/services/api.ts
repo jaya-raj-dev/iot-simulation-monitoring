@@ -33,5 +33,8 @@ export class Api {
   deleteSensor(id: number) {
   return this.http.delete(`${this.baseUrl}/sensors/${id}`);
 }
+  updateBedroom(id: number, name: string) {
+  return this.http.put(`/api/bedrooms/${id}`, { name });
+}
 
 }
