@@ -1,4 +1,4 @@
-IoT Simulation & Monitoring System Dashboard
+Smart Apartment IoT Dashboard
 
 Overview:
 
@@ -38,10 +38,10 @@ DB_NAME=smart_apartment
 3. Backend
 cd backend
 npm install
-npm run start
+node index.js
 
 
-Runs on http://localhost:3000.
+Runs on http://localhost:4000.
 
 4. Frontend
 cd frontend
